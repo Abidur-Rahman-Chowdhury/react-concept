@@ -2,23 +2,24 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+ 
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p>I am a Person</p>
+        <Person name="Abidur Rahman"></Person>
+        <Person name="Hossain Rahman"></Person>
+        <Person name ="Halima"> </Person>
       </header>
     </div>
+  );
+}
+function Person(props) {
+  return (
+      <div style={{border: '2px solid red', margin:'2px'}}>
+      <h1>Name:{ props.name}</h1>
+        <h3>Have a nice day</h3>
+      </div>
   );
 }
 
