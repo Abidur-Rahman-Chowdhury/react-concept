@@ -9,7 +9,7 @@ function App() {
         <p>I am a Person</p>
         <Person name="Abidur Rahman"></Person>
         <Person name="Hossain Rahman"></Person>
-        <Person name ="Halima"> </Person>
+       
       </header>
     </div>
   );
