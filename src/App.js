@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from 'react';
 
 function App() {
   const products = [
@@ -11,11 +12,49 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>I am a Person</p>
-        <Product product={products[0]}></Product>
-        <Product product={products[1]}></Product>
+        <Counter></Counter>
+        <User></User>
+        {
+          products.map(product => <Product product={product}></Product>)
+        }
+        {/* <Product product={products[0]}></Product>
+        <Product product={products[1]}></Product> */} 
         <Person name="Abidur Rahman"></Person>
         <Person name="Hossain Rahman"></Person>
       </header>
+    </div>
+  );
+}
+function User() {
+  const [user, setUser] = useState([]);
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(data => setUser(data));
+  }, []);  
+  return (
+    <div>
+      <h3>Dynamic User: {user.map(users => <li>{ users.name}</li>)}</h3>
+    </div>
+  )
+}
+function Counter() {
+  const [count, setCount] = useState(10);
+  const handleIncrease = () => {
+    const newCount = count + 1;
+    setCount(newCount);
+  }
+  const handleDecrease = () => {
+    if (count > 0) {
+      const newCount = count - 1;
+    setCount(newCount);
+   }
+  }
+  return (
+    <div>
+      <h1>Count:{count}</h1>
+      <button onClick={handleIncrease}>+</button>
+      <button onClick={handleDecrease}>-</button>
     </div>
   );
 }
